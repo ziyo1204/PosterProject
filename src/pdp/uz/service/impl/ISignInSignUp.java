@@ -4,19 +4,20 @@ import pdp.uz.Storage;
 import pdp.uz.model.Role;
 import pdp.uz.model.Status;
 import pdp.uz.model.User;
-import pdp.uz.service.interfaces.MainMenu;
 import pdp.uz.service.interfaces.SignInSignUp;
 
 import java.util.Scanner;
 
 public class ISignInSignUp implements SignInSignUp {
-    private  static SignInSignUp signInSignUp;
-    public static SignInSignUp getInstance(){
-        if (signInSignUp==null){
-            signInSignUp=new ISignInSignUp();
+    private static SignInSignUp signInSignUp;
+
+    public static SignInSignUp getInstance() {
+        if (signInSignUp == null) {
+            signInSignUp = new ISignInSignUp();
         }
         return signInSignUp;
     }
+
     @Override
     public void signIn() {
         Scanner scanner = new Scanner(System.in);
@@ -31,7 +32,7 @@ public class ISignInSignUp implements SignInSignUp {
             if (user == null) {
                 System.out.println("Login yoki parol xato!");
                 break;
-            }else {
+            } else {
                 if (user.getStatus().equals(Status.ACTIVE)){
                     if(user.getRole().equals(Role.ADMIN)){
                         IAdminConsole.getInstance().adminConsole(user);
@@ -41,7 +42,7 @@ public class ISignInSignUp implements SignInSignUp {
                         IUserConsole.getInstance().userConsole(user);
                         break;
                     }
-                }else {
+                } else {
                     System.out.println(user.getStatus().equals(Status.BLOCKED) ?
                             "Bu accaunt bloklangan!" :
                             "Bu accaunt o'chirilgan!");
