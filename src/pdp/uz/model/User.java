@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class User {
     private int id;
-    private String name;
+    private String userName;
     private String password;
     private String phoneNumber;
     private Role role;
@@ -14,9 +14,9 @@ public class User {
         currentId++;
     }
 
-    public User(int id, String name, String password, String phoneNumber, Role role, Status status) {
+    public User(int id, String userName, String password, String phoneNumber, Role role, Status status) {
         this.id = id;
-        this.name = name;
+        this.userName = userName;
         this.password = password;
         this.phoneNumber = phoneNumber;
         this.role = role;
@@ -31,12 +31,12 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
@@ -80,19 +80,19 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return id == user.id && Objects.equals(name, user.name) && Objects.equals(password, user.password) && Objects.equals(phoneNumber, user.phoneNumber) && role == user.role && status == user.status;
+        return id == user.id && Objects.equals(userName, user.userName) && Objects.equals(password, user.password) && Objects.equals(phoneNumber, user.phoneNumber) && role == user.role && status == user.status;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, password, phoneNumber, role, status);
+        return Objects.hash(id, userName, password, phoneNumber, role, status);
     }
 
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", role=" + role +
