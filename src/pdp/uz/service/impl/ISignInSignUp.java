@@ -3,19 +3,20 @@ package pdp.uz.service.impl;
 import pdp.uz.Storage;
 import pdp.uz.model.Role;
 import pdp.uz.model.User;
-import pdp.uz.service.interfaces.MainMenu;
 import pdp.uz.service.interfaces.SignInSignUp;
 
 import java.util.Scanner;
 
 public class ISignInSignUp implements SignInSignUp {
-    private  static SignInSignUp signInSignUp;
-    public static SignInSignUp getInstance(){
-        if (signInSignUp==null){
-            signInSignUp=new ISignInSignUp();
+    private static SignInSignUp signInSignUp;
+
+    public static SignInSignUp getInstance() {
+        if (signInSignUp == null) {
+            signInSignUp = new ISignInSignUp();
         }
         return signInSignUp;
     }
+
     @Override
     public void signIn() {
         Scanner scanner = new Scanner(System.in);
@@ -28,12 +29,12 @@ public class ISignInSignUp implements SignInSignUp {
             if (user == null) {
                 System.out.println("Kirish uchun registratsiyadan o'ting!");
                 break;
-            }else {
-                if(user.getRole().equals(Role.ADMIN)){
+            } else {
+                if (user.getRole().equals(Role.ADMIN)) {
                     IAdminConsole.getInstance().adminConsole(user);
                     break;
                 }
-                if(user.getRole().equals(Role.USER)){
+                if (user.getRole().equals(Role.USER)) {
                     IUserConsole.getInstance().userConsole(user);
                     break;
                 }
